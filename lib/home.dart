@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
       ),
+      // final model = Provider.of<ChangeColorModel>(context);
       body: Consumer<ChangeColorModel>(builder: (context, model, _) {
         return Container(
           color: model.currentValue.color,
