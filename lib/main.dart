@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         //make appbar with icon
           title: Center(
-            child: Text("CONTACT APP"),
+            child: Text("DATA SISWA"),
           )
       ),
       body: FutureBuilder<QuerySnapshot>(
@@ -72,7 +72,13 @@ class _MyAppState extends State<MyApp> {
 
                     ),
                     title: Text(alldata[index]['nama'], style: TextStyle(fontSize: 20)),
-                    subtitle: Text(alldata[index]['kelas'], style: TextStyle(fontSize: 16)),
+                    subtitle: Row(
+                      children: [
+                        Text(alldata[index]['kelas'], style: TextStyle(fontSize: 15)),
+                        Text(" ", style: TextStyle(fontSize: 15)),
+                        Text(alldata[index]['jurusan'], style: TextStyle(fontSize: 15)),
+                      ],
+                    ),
                     trailing: IconButton(
                         onPressed: () {
                           Navigator.push(

@@ -71,7 +71,7 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("CONTACT FORM"),
+          title: Text("SISWA FORM"),
           actions: [
             //if have data show delete button
             widget.id != null
