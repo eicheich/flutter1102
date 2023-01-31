@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1102/signin.dart';
 import 'package:provider/provider.dart';
 
 import 'change-color-provider.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(),
+        home: signin(),
       ),
     );
   }
