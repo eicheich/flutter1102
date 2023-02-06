@@ -1,18 +1,14 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, avoid_print, unnecessary_cast, prefer_is_empty
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter1102/home.dart';
-import 'package:get/get.dart';
+import 'package:flutter1102/Helper/Wrapper.dart';
+import 'package:flutter1102/login.dart';
+import 'package:flutter1102/signin.dart';
+import 'package:provider/provider.dart';
 
-import 'form.dart';
+import 'change-color-provider.dart';
+import 'home.dart';
 
-void main() async {
-  //do initialization to use firebase
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,24 +17,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color(0xff63A5F1),
-      ),
-      debugShowCheckedModeBanner: false,
-      getPages: [
-        GetPage(
-            name: '/home',
-            page: () => HomePage(),
-            transition: Transition.downToUp),
-        GetPage(
-            name: '/form',
-            page: () => FormPage(),
-            transition: Transition.circularReveal)
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ChangeColorModel()),
       ],
-      home: const HomePage(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Wrapper(),
+      ),
     );
   }
 }
