@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: unnecessary_new, unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable, unused_import, use_key_in_widget_constructors, avoid_print, unused_element
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'main.dart';
+import 'package:get/get.dart';
 
 class FormPage extends StatefulWidget {
   //constructor have one parameter, optional paramter
@@ -51,8 +50,7 @@ class _FormPageState extends State<FormPage> {
       //set state to fill data controller from data firebase
       setState(() {
         namaController = TextEditingController(text: item['nama']);
-        kelasController =
-            TextEditingController(text: item['kelas']);
+        kelasController = TextEditingController(text: item['kelas']);
         jurusanController = TextEditingController(text: item['jurusan']);
         fotoController = TextEditingController(text: item['foto']);
       });
@@ -76,15 +74,25 @@ class _FormPageState extends State<FormPage> {
             //if have data show delete button
             widget.id != null
                 ? IconButton(
-                onPressed: () {
-                  //method to delete data based on id
-                  siswa!.doc(widget.id).delete();
+                    onPressed: () {
+                      Get.defaultDialog(
+                          title: 'Delete',
+                          middleText: 'Are you sure?',
+                          textConfirm: 'Okay',
+                          onConfirm: () {
+                            siswa!.doc(widget.id).delete();
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/', (Route<dynamic> route) => false);
+                          },
+                          confirmTextColor: Colors.white,
+                          textCancel: 'Cancel',
+                          radius: 10);
+                      //method to delete data based on id
 
-                  //back to main page
-                  // '/' is home
-                  Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-                },
-                icon: Icon(Icons.delete))
+                      //back to main page
+                      // '/' is home
+                    },
+                    icon: Icon(Icons.delete))
                 : SizedBox()
           ],
         ),
@@ -93,10 +101,15 @@ class _FormPageState extends State<FormPage> {
         body: Form(
           key: _formKey,
           child: ListView(padding: EdgeInsets.all(16.0), children: [
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             CircleAvatar(
               radius: 30,
-              child: Icon(Icons.person, size: 30,),
+              child: Icon(
+                Icons.person,
+                size: 30,
+              ),
             ),
             Text(
               'Nama',
@@ -204,7 +217,9 @@ class _FormPageState extends State<FormPage> {
                 return null;
               },
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
@@ -238,14 +253,16 @@ class _FormPageState extends State<FormPage> {
                     });
                   }
                   //snackbar notification
-                  final snackBar = SnackBar(content: Text('Data saved successfully!'));
+                  final snackBar =
+                      SnackBar(content: Text('Data saved successfully!'));
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
                   //back to main page
                   //home page => '/'
-                  Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                  // Navigator.of(context).pushNamedAndRemoveUntil(
+                  //     '/', (Route<dynamic> route) => false);
+                  Get.toNamed("/home");
                 }
-
               },
             )
           ]),
