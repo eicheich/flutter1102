@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter1102/Helper/Wrapper.dart';
+import 'package:flutter1102/profile.dart';
 import 'package:flutter1102/utilities/constants.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -183,13 +187,22 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildSocialBtn(Function onTap, AssetImage logo) {
     return GestureDetector(
       onTap: () {
-        // signin with google
-                _googleSignIn.signIn().then((userData) {
-                  setState(() {
-                    _isLoggedIn = true;
-                    _userObj = userData!;
-                  });
-                }).catchError((e) {});
+        _googleSignIn.signIn().then((userData) {
+          setState(() {
+            _userObj = userData!;
+            _isLoggedIn = true;
+            print(_userObj.displayName);
+          }
+          );
+          // navigator push ke profile page dengan membawa data _userObj
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ProfilePage(userObj: _userObj)),
+          );
+
+
+        });
+
       },
       child: Container(
         height: 60.0,

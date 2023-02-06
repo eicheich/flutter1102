@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1102/home.dart';
 import 'package:flutter1102/login.dart';
 import 'package:flutter1102/profile.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -34,7 +35,7 @@ class _signinState extends State<signin> {
             //           child: Text("Logout"))
             //     ],
             //   )
-            ? const ProfilePage()
+            ?  HomePage()
             // : Center(
             //     child: ElevatedButton(
             //       child: Text("Login with Google"),
