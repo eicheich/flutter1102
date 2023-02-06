@@ -22,10 +22,12 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-          //make appbar with icon
-          title: Center(
-        child: Text("DATA SISWA"),
-      )),
+        //make appbar with icon
+        title: Center(
+          child: Text("DATA SISWA"),
+        ),
+        automaticallyImplyLeading: false,
+      ),
       body: FutureBuilder<QuerySnapshot>(
         //data to be retrieved in the future
         future: siswa.get(),

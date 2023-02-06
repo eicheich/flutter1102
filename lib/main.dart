@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blue,
+        primaryColor: Color(0xff63A5F1),
       ),
       debugShowCheckedModeBanner: false,
       getPages: [
