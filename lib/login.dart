@@ -4,6 +4,7 @@ import 'package:flutter1102/Helper/Wrapper.dart';
 import 'package:flutter1102/profile.dart';
 import 'package:flutter1102/utilities/constants.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'home.dart';
 
@@ -16,8 +17,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   @override
-
   bool _isLoggedIn = false;
+  // FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+
   bool _rememberMe = false;
   late GoogleSignInAccount _userObj;
   GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -192,17 +194,14 @@ class _LoginPageState extends State<LoginPage> {
             _userObj = userData!;
             _isLoggedIn = true;
             print(_userObj.displayName);
-          }
-          );
+          });
           // navigator push ke profile page dengan membawa data _userObj
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProfilePage(userObj: _userObj)),
+            MaterialPageRoute(
+                builder: (context) => ProfilePage(userObj: _userObj)),
           );
-
-
         });
-
       },
       child: Container(
         height: 60.0,
@@ -232,13 +231,13 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           _buildSocialBtn(
-                () => print('Login with Facebook'),
+            () => print('Login with Facebook'),
             AssetImage(
               'assets/logos/facebook.jpg',
             ),
           ),
           _buildSocialBtn(
-                () => print('Login with Google'),
+            () => print('Login with Google'),
             AssetImage(
               'assets/logos/google.jpg',
             ),
