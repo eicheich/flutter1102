@@ -14,7 +14,6 @@ class chatpage extends StatefulWidget {
 }
 
 class _chatpageState extends State<chatpage> {
-  // display name
   String email;
 
   _chatpageState({required this.email});
@@ -25,7 +24,6 @@ class _chatpageState extends State<chatpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // cool appbar chat
       appBar: AppBar(
         title: Text(email),
         actions: [
@@ -56,7 +54,6 @@ class _chatpageState extends State<chatpage> {
             ),
             Row(
               children: [
-                // cool design send message
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.only(left: 10, right: 10),
@@ -83,7 +80,6 @@ class _chatpageState extends State<chatpage> {
                       fs.collection('Messages').doc().set({
                         'message': message.text.trim(),
                         'time': DateTime.now(),
-                        // email : email but replace the @gmail.com\
                         'email': email
                       });
 
