@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter1102/chatpage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter1102/login.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -18,7 +19,6 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             Image.network(userObj.photoUrl!),
-            // get fcm token
             TextButton(
                 onPressed: () async {
                   final FirebaseMessaging _firebaseMessaging =
@@ -27,9 +27,16 @@ class ProfilePage extends StatelessWidget {
                   print(token);
                 },
                 child: const Text("Get FCM Token")),
-  
+
             Text(userObj.displayName!),
             Text(userObj.email),
+            ElevatedButton(onPressed: (() {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>  chatpage(email: userObj.email)));
+
+            }), child: Text("Chat")),
             TextButton(
                 onPressed: () {
                   // signout
