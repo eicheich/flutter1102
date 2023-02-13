@@ -35,10 +35,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   provider: ^6.0.5
+  get:
   firebase_auth:
-#  firebase_storage:
   cloud_firestore:
   firebase_core:
+  google_sign_in:
+  firebase_messaging:
+  flutter_local_notifications:
+
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +65,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/logos/facebook.jpg
+    - assets/logos/google.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
