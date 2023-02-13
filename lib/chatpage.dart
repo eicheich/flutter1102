@@ -82,7 +82,6 @@ class _chatpageState extends State<chatpage> {
                         'time': DateTime.now(),
                         'email': email
                       });
-
                       message.clear();
                     }
                   },
