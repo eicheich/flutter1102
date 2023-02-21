@@ -5,6 +5,9 @@ import 'package:flutter1102/signin.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:get/get.dart';
+
+import 'form.dart';
 
 import 'change-color-provider.dart';
 import 'home.dart';
@@ -27,12 +30,24 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ChangeColorModel()),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          primaryColor: Color(0xff63A5F1),
         ),
-        home: Wrapper(),
+        debugShowCheckedModeBanner: false,
+        getPages: [
+          GetPage(
+              name: '/home',
+              page: () => HomePage(),
+              transition: Transition.downToUp),
+          GetPage(
+              name: '/form',
+              page: () => FormPage(),
+              transition: Transition.circularReveal)
+        ],
+        home: const Wrapper(),
       ),
     );
   }
