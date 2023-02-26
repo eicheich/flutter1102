@@ -192,6 +192,7 @@ class _FormPageState extends State<FormPage> {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF6c5ce7),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -231,7 +232,9 @@ class _FormPageState extends State<FormPage> {
                   //home page => '/'
                   // Navigator.of(context).pushNamedAndRemoveUntil(
                   //     '/', (Route<dynamic> route) => false);
-                  Get.toNamed("/home");
+                  // Get.toNamed("/home");
+                //  back to previous page
+                  Get.back();
                 }
               },
             )
@@ -424,6 +427,7 @@ class _FormPageState extends State<FormPage> {
                 padding: EdgeInsets.only(left: 160, right: 160),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF6c5ce7),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -488,7 +492,9 @@ class _FormPageState extends State<FormPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("SISWA FORM"),
+          elevation: 0,
+          backgroundColor: Color(0xFF6c5ce7),
+          title: Text("Tambah Data Siswa"),
           actions: [
             //if have data show delete button
             widget.id != null

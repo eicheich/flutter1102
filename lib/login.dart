@@ -6,6 +6,7 @@ import 'package:flutter1102/utilities/constants.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import 'bottom_nav_bar.dart';
 import 'home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -199,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProfilePage(userObj: _userObj)),
+                builder: (context) => MyHomePage(userObj: _userObj)),
           );
         });
       },

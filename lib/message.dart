@@ -42,7 +42,7 @@ class _messagesState extends State<messages> {
             print(d.toString());
             return Padding(
               padding:
-                  const EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 10),
+              const EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 10),
               child: Column(
                 crossAxisAlignment: email == qs['email']
                     ? CrossAxisAlignment.end
@@ -51,8 +51,7 @@ class _messagesState extends State<messages> {
                   // cool buble message
                   Container(
                     decoration: BoxDecoration(
-                      color:
-                          email == qs['email'] ? Colors.blue : Colors.grey[300],
+                      color: email == qs['email'] ? Color(0xffff4795) : Color(0xFF6c5ce7),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
@@ -64,18 +63,20 @@ class _messagesState extends State<messages> {
                         ),
                       ),
                     ),
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(20),
                     // margin left
 
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          qs['email'],
+                          // qs['email'],
+                          // remove text @gmail.com
+                          qs['email'].toString().split('@')[0],
                           style: TextStyle(
-                            color: email == qs['email']
-                                ? Colors.white
-                                : Colors.black,
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
@@ -84,9 +85,8 @@ class _messagesState extends State<messages> {
                         Text(
                           qs['message'],
                           style: TextStyle(
-                            color: email == qs['email']
-                                ? Colors.white
-                                : Colors.black,
+                            color: Colors.white,
+                            fontSize: 15,
                           ),
                         ),
                       ],
